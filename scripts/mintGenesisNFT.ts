@@ -1,3 +1,4 @@
+import { ethers } from "ethers";
 const hre = require("hardhat");
 import * as dotenv from "dotenv";
 
@@ -5,8 +6,8 @@ dotenv.config();
 
 async function mintmain() {
   const provider = hre.ethers.provider; // Hardhat's built-in provider
-  const privateKey = process.env.SEPOLIA_PRIVATE_KEY as string; // 환경 변수의 타입을 명시적으로 지정
-
+  const privateKey = process.env.SEPOLIA_PRIVATE_KEY as string; // 환경 변수의 타입을 명시적으로 지정(typescript라서..)
+  const currentGasPrice = await provider.getGasPrice();
   if (!privateKey) {
     console.error(
       "SEPOLIA_PRIVATE_KEY is not set in the environment variables."
@@ -23,7 +24,10 @@ async function mintmain() {
   try {
     const tx = await genesisNFT.connect(wallet).mintNFT(
       wallet.address,
-      "ipfs://여기에는_genesis-metada를_pinata에_올렸을때_얻은_CID_입력" /////채워주세요~
+      "ipfs://여기에는_genesis-metada를_pinata에_올렸을때_얻은_CID_입력", /////채워주세요~
+      {
+        gasPrice: currentGasPrice.add(ethers.utils.parseUnits("1", "gwei")),
+      }
     );
     const receipt = await tx.wait();
     const mintEvent = receipt.events?.find((e: any) => e.event === "Minted");
