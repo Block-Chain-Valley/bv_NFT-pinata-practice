@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
 
 contract QueryTokens {
-    IERC721Enumerable public nftContract; // IERC721Enumerable 인터페이스를 사용하여 nftContract 변수를 선언
+    IERC721Enumerable public nftContract; // IERC721Enumerable 인터페이스를 사용하여 nftContract 변수를 선언 
 
     constructor(address _nftContract) {
         nftContract = IERC721Enumerable(_nftContract); // 컨트랙트가 배포될 때, ERC721 토큰 컨트랙트의 주소를 인자로 받아 nftContract 변수에 저장
@@ -25,7 +25,6 @@ contract QueryTokens {
         
     }
 }
-
 
 //** 아래는 두 함수의 정의 **//
 // function balanceOf(address _owner) external view returns (uint);
