@@ -10,7 +10,7 @@ POLYGON_API_URL = "Alchemy에서_받은_polygon_api_url"
 을 작성해주세요.
 
 ## 빈칸 없는 ver.(답지)은 아래의 repo를 참고하세요.
-[230920SessionArchive](https://github.com/Learning-N-Running/230920SessionArchive, "230920SessionArchive link")
+https://github.com/Learning-N-Running/230920SessionArchive
 
 
 
